@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Base CSS Variables (Light Mode Default) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf7f2;
+  /* Light ivory */
+  --foreground: #1a1a1a;
+  /* Dark text */
+  --card: #ffffff;
+  /* Card backgrounds */
+  --card-foreground: #1a1a1a;
+  /* Card text */
+}
+
+/* Dark Mode Overrides (applied when .dark class is on <html>) */
+.dark {
+  --background: #0a0a0a;
+  /* Deep charcoal */
+  --foreground: #ededed;
+  /* Light text */
+  --card: #111111;
+  /* Dark cards */
+  --card-foreground: #ededed;
+  /* Light card text */
+}
+
+/* Auto-detect System Preference */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --card: #111111;
+    --card-foreground: #ededed;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+  font-family: 'Geist', system-ui, sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-amber-500/30;
+  }
+
+  .btn-outline {
+    @apply border-2 border-white hover:bg-white hover:text-black font-bold px-8 py-5 rounded-xl transition-all duration-300;
+  }
+
+  .section-padding {
+    @apply py-24 px-6 max-w-7xl mx-auto;
+  }
+
+  /* Hero overlay for better contrast */
+  .hero-overlay {
+    @apply bg-black/50 dark:bg-black/60;
+  }
 }
