@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div>
-            <div className="bg-white px-5 py-2 relative w-56 h-12 overflow-hidden rounded-sm">
+            <div className="bg-white px-5 py-2 relative w-56 h-12 mb-5 overflow-hidden rounded-sm">
               <Link href="/" className="flex items-center">
                 <Image
                   src="/images/logo.png"
@@ -30,7 +30,7 @@ export default function Footer() {
             <p className="text-foreground/70 leading-relaxed">
               {t.description.line1}
               <br />
-              {t.description.line2}
+              <span className="text-xs">{t.description.line2}</span>
             </p>
           </div>
 

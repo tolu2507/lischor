@@ -29,21 +29,39 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="space-y-6 text-lg leading-relaxed">
-            <p>
-              <span className="font-medium">{t.paragraph1.title}</span>
-              <br />
-              {t.paragraph1.part1}
-              <span className="text-amber-500 font-bold">
-                {" "}
-                {t.paragraph1.buyingSelling}
-              </span>
-              {t.paragraph1.and}
-              <span className="text-amber-500 font-bold">
-                {" "}
-                {t.paragraph1.leasing}
-              </span>
-              {t.paragraph1.activities}.
-            </p>
+            {language === "en" ? (
+              <>
+                <p>
+                  <span className="font-medium">
+                    <strong>{t.paragraph1.title}</strong>
+                  </span>
+                  <br />
+                  {t.paragraph1.part1}
+                  <span className="text-amber-500 font-bold">
+                    {" "}
+                    {t.paragraph1.buyingSelling}
+                  </span>
+                  {t.paragraph1.and}
+                  <span className="text-amber-500 font-bold">
+                    {" "}
+                    {t.paragraph1.leasing}
+                  </span>
+                  {t.paragraph1.activities}.
+                </p>
+              </>
+            ) : (
+              <>
+                <p>
+                  <span className="font-medium">
+                    <strong>{t.paragraph1.title}</strong>
+                  </span>
+                  <br />
+                  {t.paragraph1.part1}
+                  <br />
+                  {t.paragraph1.part2}
+                </p>
+              </>
+            )}
             <p>
               <strong>{t.paragraph2.part1}</strong>
               {t.paragraph2.experience}
@@ -70,6 +88,8 @@ export default function About() {
             <div className="bg-card border border-white/10 rounded-2xl h-64 flex items-center justify-center text-center p-6 shadow-xl">
               <span className="text-lg font-medium">
                 {t.offices.moscowSpb.title}
+                <br />
+                {t.offices.moscowSpb.title2}
                 <br />
                 <span className="text-sm text-gray-500">
                   {t.offices.moscowSpb.status}
